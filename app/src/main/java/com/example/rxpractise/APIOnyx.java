@@ -1,6 +1,8 @@
 package com.example.rxpractise;
 
 import com.example.rxpractise.bean.Books;
+import com.example.rxpractise.response.ResponeData;
+import com.example.rxpractise.response.ResponseBookDownInfo;
 
 import java.util.Map;
 
@@ -18,5 +20,5 @@ public interface APIOnyx {
 
 
     @GET("api/1/shop/books/{bookid}/download/")
-    Call<String> getDownBookInfo(@HeaderMap Map<String,String> headers, @Path("bookid") long bookid  );
+    Call<ResponeData<ResponseBookDownInfo>> getDownBookInfo(@HeaderMap Map<String,String> headers, @Path("bookid") long bookid  );
 }
