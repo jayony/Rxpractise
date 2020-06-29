@@ -1,6 +1,6 @@
 package com.example.rxpractise.response;
 
-public class ResponseBookDownInfo  {
+public class ResponseBookDownInfo {
 
     public String origin_file;
     public String created_at;
@@ -12,6 +12,9 @@ public class ResponseBookDownInfo  {
     public String updated_at;
     public int user_id;
     public String expire;
+    public int id;
+    public String key;
+    public String md5;
 
     public String getOrigin_file() {
         return origin_file;
@@ -117,8 +120,5 @@ public class ResponseBookDownInfo  {
         this.md5 = md5;
     }
 
-    public int id;
-    public String key;
-    public String md5;
 
 }
