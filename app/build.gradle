@@ -49,5 +49,10 @@ dependencies {
     implementation 'com.blankj:utilcode:1.29.0'
     implementation "com.aliyun.dpa:oss-android-sdk:2.3.0"
 
+    //数据库
+    annotationProcessor "com.github.Raizlabs.DBFlow:dbflow-processor:$rootProject.dbflowVersion"
+    implementation "com.github.Raizlabs.DBFlow:dbflow-core:$rootProject.dbflowVersion"
+    implementation "com.github.Raizlabs.DBFlow:dbflow:$rootProject.dbflowVersion"
+
 
 }

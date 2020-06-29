@@ -194,6 +194,8 @@ public class ParctiseRXInte {
             @Override
             public void onFailure(Call<ResponeData> call, Throwable t) {
 
+                Log.e("","");
+
             }
         });
     }
