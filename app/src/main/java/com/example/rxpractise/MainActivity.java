@@ -1,15 +1,18 @@
 package com.example.rxpractise;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.rxpractise.bean.OkBindingData;
 import com.example.rxpractise.data.model.TB_Key;
+import com.example.rxpractise.databinding.ActivityMain2Binding;
 import com.example.rxpractise.event.EventResponse;
-import com.raizlabs.android.dbflow.config.FlowLog;
-import com.raizlabs.android.dbflow.config.FlowManager;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 import org.greenrobot.eventbus.Subscribe;
@@ -17,17 +20,28 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.List;
 
+import static android.widget.Toast.LENGTH_LONG;
+
 public class MainActivity extends AppCompatActivity {
 
     TextView txt_response;
     public ParctiseRXInte parctiseRXInte = new ParctiseRXInte();
 
+    ActivityMain2Binding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_main2);
 
-        setContentView(R.layout.activity_main2);
+        OkBindingData bindingData = new OkBindingData();
+        bindingData.setCurray("LHNH");
+        bindingData.setName("onyx___________________________Jay");
+        bindingData.setCurray("10000000");
+
+        binding.setOpt(bindingData);
+        binding.setEventListener(new DataEventListener());
+
         txt_response = findViewById(R.id.txt_response);
         EventManager.getInstance().getEvent().register(this);
 
@@ -47,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void select(){
         List<TB_Key> list = SQLite.select().from(TB_Key.class).queryList();
-
     }
 
 
@@ -82,4 +95,15 @@ public class MainActivity extends AppCompatActivity {
         parctiseRXInte.removeBook();
     }
 
+    public class DataEventListener{
+
+        public void onClick(OkBindingData okBindingData) {
+            Toast.makeText(MainActivity.this,"Data Click!  "+ okBindingData.getName(), LENGTH_LONG).show();
+        }
+
+        public void onLauncher(OkBindingData okBindingData) {
+            Toast.makeText(MainActivity.this,"Launcher Event!", LENGTH_LONG).show();
+        }
+
+    }
 }

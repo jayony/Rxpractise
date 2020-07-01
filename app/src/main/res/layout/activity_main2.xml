@@ -1,60 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <Button
-        android:onClick="buybook"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Play"/>
-    <Button
-        android:onClick="getdowninfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Get Down Info"/>
+    <data>
+        <variable
+            name="opt"
+            type="com.example.rxpractise.bean.OkBindingData" />
+        <variable
+            name="eventListener"
+            type="com.example.rxpractise.MainActivity.DataEventListener" />
+    </data>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
 
-    <Button
-        android:layout_marginTop="20dp"
-        android:onClick="addToCar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="AddToCar"/>
+        <Button
+            android:onClick="buybook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Play" />
 
-    <Button
-        android:layout_marginTop="20dp"
-        android:onClick="getCar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="GetCar"/>
-
-    <Button
-        android:layout_marginTop="20dp"
-        android:onClick="deleteCar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="DeleteCar"/>
-
-    <Button
-        android:layout_marginTop="20dp"
-        android:onClick="delectBook"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Delect special Book"/>
+        <Button
+            android:onClick="getdowninfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Get Down Info" />
 
 
+        <Button
+            android:layout_marginTop="20dp"
+            android:onClick="addToCar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AddToCar" />
+
+        <Button
+            android:layout_marginTop="20dp"
+            android:onClick="getCar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GetCar" />
+
+        <Button
+            android:layout_marginTop="20dp"
+            android:onClick="deleteCar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DeleteCar" />
+
+        <Button
+            android:layout_marginTop="20dp"
+            android:onClick="delectBook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delect special Book" />
 
 
-    <TextView
-        android:id="@+id/txt_response"
-        android:text=""
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/txt_response"
+            android:text="@{opt.name}"
+            android:layout_gravity="center"
+            android:background="#FDF781"
+            android:layout_width="300dp"
+            android:textColor="#000000"
+            android:onClick="@{()->eventListener.onClick(opt)}"
+            android:layout_height="wrap_content" />
 
-</LinearLayout>
+    </LinearLayout>
+</layout>
