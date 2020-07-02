@@ -4,12 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.rxpractise.bean.OkBindingData;
+import com.example.rxpractise.common.view.BaseWebActivity;
 import com.example.rxpractise.data.model.TB_Key;
 import com.example.rxpractise.databinding.ActivityMain2Binding;
 import com.example.rxpractise.event.EventResponse;
@@ -99,11 +101,11 @@ public class MainActivity extends AppCompatActivity {
 
         public void onClick(OkBindingData okBindingData) {
             Toast.makeText(MainActivity.this,"Data Click!  "+ okBindingData.getName(), LENGTH_LONG).show();
+            MainActivity.this.startActivity(new Intent(MainActivity.this, BaseWebActivity.class));
         }
 
         public void onLauncher(OkBindingData okBindingData) {
             Toast.makeText(MainActivity.this,"Launcher Event!", LENGTH_LONG).show();
         }
-
     }
 }

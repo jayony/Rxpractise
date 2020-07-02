@@ -6,6 +6,7 @@ import com.example.rxpractise.response.ResponseClearCar;
 import com.example.rxpractise.response.ResponseMyCar;
 import com.example.rxpractise.response.ResponeData;
 import com.example.rxpractise.response.ResponseBookDownInfo;
+import com.example.rxpractise.response.ResponseOnderStatus;
 
 import java.util.Map;
 
@@ -17,6 +18,7 @@ import retrofit2.http.Header;
 import retrofit2.http.HeaderMap;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface APIOnyx {
 
@@ -39,5 +41,8 @@ public interface APIOnyx {
 
     @POST("/api/1/carts/remove")
     Call<ResponeData> removeBookFromCar(@HeaderMap Map<String,String> headers, @Body CarBooks booksbean);
+
+    @GET("/api/1/orders/check")
+    Call<ResponeData<ResponseOnderStatus>> getOrderStatus(@Query("out_trade_no") String order);
 
 }

@@ -5,11 +5,13 @@ import android.util.Log;
 import com.blankj.utilcode.util.LogUtils;
 import com.example.rxpractise.bean.Books;
 import com.example.rxpractise.bean.CarBooks;
+import com.example.rxpractise.event.EventPay;
 import com.example.rxpractise.event.EventResponse;
 import com.example.rxpractise.response.ResponseClearCar;
 import com.example.rxpractise.response.ResponseMyCar;
 import com.example.rxpractise.response.ResponeData;
 import com.example.rxpractise.response.ResponseBookDownInfo;
+import com.example.rxpractise.response.ResponseOnderStatus;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -194,7 +196,40 @@ public class ParctiseRXInte {
             @Override
             public void onFailure(Call<ResponeData> call, Throwable t) {
 
-                Log.e("","");
+                Log.e("", "");
+
+            }
+        });
+    }
+
+
+    public void getOrderStatus(String orderID) {
+
+        Call<ResponeData<ResponseOnderStatus>> calldown = api.getOrderStatus(orderID);
+
+        calldown.enqueue(new Callback<ResponeData<ResponseOnderStatus>>() {
+            @Override
+            public void onResponse(Call<ResponeData<ResponseOnderStatus>> call, Response<ResponeData<ResponseOnderStatus>> response) {
+                if (response != null) {
+                    String json = gson.toJson(response.body().data);
+                    ResponseOnderStatus responseOnderStatus = response.body().data;
+                    int status = responseOnderStatus.getStatus();
+                    switch (status) {
+                        case 0:
+                            EventManager.getInstance().getEvent().post(new EventPay(EventPay.NOPAY));
+                            break;
+                        case 1:
+                            EventManager.getInstance().getEvent().post(new EventPay(EventPay.SUCCESS));
+                            break;
+                    }
+                    LogUtils.json(json);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponeData<ResponseOnderStatus>> call, Throwable t) {
+
+                Log.e("", "");
 
             }
         });
