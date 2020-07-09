@@ -44,14 +44,14 @@ public class ParctiseRXInte {
 
         //创建请求实体Body
         books.setBooks(new long[]{bookid});
-        carBooks.setBookIds(new long[]{36, 37/*,38,39,55,88,98,132*/});
+        carBooks.setBookIds(new long[]{22879/*,22881,22882,22883,22884,22885,22886,22887,22888,22889,22890,22891,22892,22893*/});
         headers.put("Authorization", token2);
     }
 
     public APIOnyx getServiceRequest() {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://dev.send2boox.com/")
-//                .baseUrl("http://192.168.11.27:7002/")
+//                .baseUrl("http://dev.send2boox.com/")
+                .baseUrl("http://192.168.11.27:7002/")
                 .addConverterFactory(GsonConverterFactory.create()).build();
         return retrofit.create(APIOnyx.class);
     }

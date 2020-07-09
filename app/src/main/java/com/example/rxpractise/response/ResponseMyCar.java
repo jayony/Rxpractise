@@ -77,54 +77,6 @@ public class ResponseMyCar extends ResponeData {
     }
 
     public class BooksEntity {
-        /**
-         * large_cfa_cover : null
-         * can_try : null
-         * catalog : null
-         * isbn : null
-         * large_cover : null
-         * edition : null
-         * discount : null
-         * created_at : 2019-04-08T10:41:26.000Z
-         * cart_ship : {"cart_id":4,"updated_at":"2020-06-28T07:47:25.000Z","count":1,"created_at":"2020-06-28T07:47:25.000Z","target_id":36,"id":3,"version":0,"target":"book","ordinal":null}
-         * language : null
-         * upload_by : null
-         * cover : http://onyx-edu.oss-cn-shenzhen.aliyuncs.com/cover/nKmKNH_1561954305968.jpg
-         * can_read : null
-         * word_count : null
-         * fav_count : null
-         * file : null
-         * updated_at : 2019-09-04T03:05:26.000Z
-         * publish_time : 2006-02-11T00:00:00.000Z
-         * price : 0
-         * try_url : null
-         * currency : null
-         * id : 36
-         * free : null
-         * ebook_id : 36
-         * can_buy : null
-         * info : The Prince is a 16th-century political treatise by the Italian diplomat and political theorist Niccol貌 Machiavelli. From his correspondence, a version appears to have been distributed in 1513, using a Latin title, De Principatibus. However, the printed version was not published until 1532, five years after Machiavelli's death. This was carried out with the permission of the Medici pope Clement VII, but "long before then, in fact since the first appearance of The Prince in manuscript, controversy had swirled about his writings".
-         * book_type : null
-         * summary : null
-         * star : null
-         * author : Machiavelli, Niccol貌
-         * authorInfo : null
-         * format : epub
-         * source_type : 0
-         * version : 2
-         * url : http://www.gutenberg.org/ebooks/1232.epub.images
-         * download_count : null
-         * size : 124913
-         * name : The Prince
-         * cfa_cover : null
-         * publisher : null
-         * guid : http://m.gutenberg.org/ebooks/1232.opds
-         * _id : 36
-         * cfa_file : null
-         * view_count : null
-         * md5 : null
-         * status : 1
-         */
         private String large_cfa_cover;
         private String can_try;
         private String catalog;

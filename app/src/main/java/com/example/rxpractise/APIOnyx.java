@@ -30,16 +30,16 @@ public interface APIOnyx {
     @GET("api/1/shop/books/{bookid}/download/")
     Call<ResponeData<ResponseBookDownInfo>> getDownBookInfo(@Header(HEADER_AUTHORIZATION) String headers, @Path("bookid") long bookid  );
 
-    @POST("api/1/carts/add")
+    @POST("api/1/shop/carts/add")
     Call<ResponeData> addToCar(@HeaderMap Map<String,String> headers, @Body CarBooks booksbean);
 
-    @GET("api/1/carts/me")
+    @GET("api/1/shop/carts/me")
     Call<ResponseMyCar> getCar(@HeaderMap Map<String,String> headers);
 
-    @DELETE("api/1/carts/clear")
+    @DELETE("api/1/shop/carts/clear")
     Call<ResponseClearCar> getClearCar(@HeaderMap Map<String,String> headers);
 
-    @POST("/api/1/carts/remove")
+    @POST("/api/1/shop/carts/remove")
     Call<ResponeData> removeBookFromCar(@HeaderMap Map<String,String> headers, @Body CarBooks booksbean);
 
     @GET("/api/1/orders/check")

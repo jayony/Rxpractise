@@ -59,11 +59,17 @@ public class BaseWebActivity extends Activity {
 
         initWebView();
 
-        bookids = new String[]{"22"};
+        bookids = new String[]{"22879"};
         String arrStr = Arrays.toString(bookids);
         LogUtils.d(WEB_VIEW, "" + arrStr);
         title = "Pay";
         url = BASE_PAY_URL;
+        createUrl(arrStr);
+        mWebView.loadUrl(url);
+        EventManager.getInstance().getEvent().register(this);
+    }
+
+    private void createUrl(String arrStr) {
         Uri.Builder uri = Uri.parse(url).buildUpon();
         uri.appendQueryParameter("books", Base64.encodeToString(arrStr.getBytes(), Base64.DEFAULT));
 
@@ -72,8 +78,6 @@ public class BaseWebActivity extends Activity {
 
         url = uri.toString();
         LogUtils.d(WEB_VIEW, "url ：" + url);
-        mWebView.loadUrl(url);
-        EventManager.getInstance().getEvent().register(this);
     }
 
     private void initWebView() {
@@ -119,7 +123,7 @@ public class BaseWebActivity extends Activity {
     }
 //    22680111bc4811ea9b6efb3dd4544117
 //    22680111bc4811ea9b6efb3dd4544117
-//    22680111bc4811ea9b6efb3dd4544117
+//    22680111bc4811ea9b6efb3dd4544
     @SuppressLint("HandlerLeak")
     Handler handler = new Handler() {
         @Override
@@ -129,7 +133,7 @@ public class BaseWebActivity extends Activity {
             LogUtils.d("支付状态轮询......");
             Toast.makeText(BaseWebActivity.this, "支付状态轮询......", Toast.LENGTH_LONG).show();
             if (!ispaysuccess) {
-                parctiseRXInte.getOrderStatus(order);
+                parctiseRXInte.getOrderStatus("acb166b1bd1d11ea8769b78ff869acc9");
                 handler.sendEmptyMessageDelayed(1, DELAY_MILLIS);
             } else {
                 Toast.makeText(BaseWebActivity.this, "支付成功,结束轮询", Toast.LENGTH_LONG).show();
